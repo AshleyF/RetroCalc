@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
+  <Identity Name="12613CreationSoftware.RetroCalc" Publisher="CN=A7584912-2E6D-4B6D-9A96-455C51D9A9E0" Version="1.0.0.2" />
+  <Properties>
+    <DisplayName>RetroCalc</DisplayName>
+    <PublisherDisplayName>Creation Software</PublisherDisplayName>
+    <Logo>Assets\StoreLogo.png</Logo>
+  </Properties>
+  <Prerequisites>
+    <OSMinVersion>6.2.1</OSMinVersion>
+    <OSMaxVersionTested>6.2.1</OSMaxVersionTested>
+  </Prerequisites>
+  <Resources>
+    <Resource Language="x-generate" />
+  </Resources>
+  <Applications>
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="RetroCalc.App">
+      <VisualElements DisplayName="RetroCalc" Logo="Assets\Logo.png" SmallLogo="Assets\SmallLogo.png" Description="A modern remake of this classic RPN calculator of four decades ago, with the addition of full stack view and macro recording." ForegroundText="light" BackgroundColor="#700000">
+        <DefaultTile ShowName="allLogos" ShortName="RetroCalc" />
+        <SplashScreen Image="Assets\SplashScreen.png" BackgroundColor="#000000" />
+        <InitialRotationPreference>
+          <Rotation Preference="portrait" />
+          <Rotation Preference="landscape" />
+          <Rotation Preference="portraitFlipped" />
+          <Rotation Preference="landscapeFlipped" />
+        </InitialRotationPreference>
+      </VisualElements>
+    </Application>
+  </Applications>
+</Package>

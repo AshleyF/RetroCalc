@@ -1,0 +1,112 @@
+﻿<Page
+    x:Class="RetroCalc.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:RetroCalc"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" IsDoubleTapEnabled="False" IsHoldingEnabled="False" IsRightTapEnabled="False" Loaded="Page_Loaded_1" KeyUp="Page_KeyUp_1">
+    <StackPanel Background="#FF303030" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel Background="#FF220000" Height="Auto" Margin="12">
+            <Grid Height="79">
+                <TextBlock x:Name="DisplayMemory" TextWrapping="Wrap" Width="Auto" Foreground="Red" FontSize="18" IsDoubleTapEnabled="False" IsHoldingEnabled="False" IsRightTapEnabled="False" IsTapEnabled="False" ManipulationMode="None"  ScrollViewer.VerticalScrollBarVisibility="Disabled" TextAlignment="Right" FontWeight="Bold" Padding="4,4,0,0" Margin="0,4,8,4" VerticalAlignment="Top" FontFamily="Global User Interface"/>
+                <TextBlock x:Name="DisplayStack" TextWrapping="Wrap" Width="Auto" Foreground="Red" FontSize="18" IsDoubleTapEnabled="False" IsHoldingEnabled="False" IsRightTapEnabled="False" IsTapEnabled="False" ManipulationMode="None"  ScrollViewer.VerticalScrollBarVisibility="Disabled" TextAlignment="Left" FontWeight="Bold" Padding="0,4,4,2" Margin="8,4,0,4" VerticalAlignment="Top" FontFamily="Global User Interface"/>
+            </Grid>
+            <Grid Height="67">
+                <TextBlock x:Name="DisplayLeft" TextWrapping="Wrap" Width="Auto" Foreground="Red" FontSize="36" IsDoubleTapEnabled="False" IsHoldingEnabled="False" IsRightTapEnabled="False" IsTapEnabled="False" ManipulationMode="None"  ScrollViewer.VerticalScrollBarVisibility="Disabled" TextAlignment="Left" FontWeight="Bold" Padding="2,4,0,4" Margin="0,4,0,8" VerticalAlignment="Center" FontFamily="Global User Interface"/>
+                <TextBlock x:Name="DisplayRight" TextWrapping="Wrap" Width="Auto" Foreground="Red" FontSize="36" IsDoubleTapEnabled="False" IsHoldingEnabled="False" IsRightTapEnabled="False" IsTapEnabled="False" ManipulationMode="None"  ScrollViewer.VerticalScrollBarVisibility="Disabled" TextAlignment="Right" FontWeight="Bold" Padding="0,4,4,6" Margin="0,4,4,8" VerticalAlignment="Center" FontFamily="Global User Interface"/>
+            </Grid>
+        </StackPanel>
+        <Grid Margin="10,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="54"/>
+                <ColumnDefinition Width="54"/>
+                <ColumnDefinition Width="54"/>
+                <ColumnDefinition Width="54"/>
+                <ColumnDefinition Width="54"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Button ToolTipService.ToolTip="Shortcut key: ^" AutomationProperties.AccessKey="^" IsTabStop="False" Padding="6,6" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Black" BorderBrush="Black" ClickMode="Press" Grid.Row="0" Grid.Column="0" Click="Power" FontSize="18" BorderThickness="2">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Margin="0,4,0,0">x</TextBlock>
+                        <TextBlock Margin="0,0,0,4" FontSize="14">y</TextBlock>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+            <Button ToolTipService.ToolTip="Shortcut key: L" AutomationProperties.AccessKey="L" IsTabStop="False" Content="log" Padding="0,5,0,7" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Black"  BorderBrush="Black" ClickMode="Press" Grid.Row="0" Grid.Column="1" Click="Log10" FontSize="18" BorderThickness="2"/>
+            <Button ToolTipService.ToolTip="Shortcut key: N" AutomationProperties.AccessKey="N" IsTabStop="False" Content="ln"  Padding="0,5,0,7" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Black"  BorderBrush="Black" ClickMode="Press" Grid.Row="0" Grid.Column="2" Click="LogE" FontSize="18" BorderThickness="2"/>
+            <Button ToolTipService.ToolTip="Shortcut key: E" AutomationProperties.AccessKey="E" IsTabStop="False" Padding="0,5,0,7" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Black" BorderBrush="Black" ClickMode="Press" Grid.Row="0" Grid.Column="3" Click="Exp"  FontSize="18" BorderThickness="2">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Margin="0,4,0,0">e</TextBlock>
+                        <TextBlock Margin="0,0,0,4" FontSize="14">x</TextBlock>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+            <Button ToolTipService.ToolTip="Shortcut key: Delete" AutomationProperties.AccessKey="Delete" IsTabStop="False" Content="CLR" Padding="0,6" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FF0088DD" BorderBrush="#FF0088DD" ClickMode="Press" Grid.Row="0" Grid.Column="4" Click="Clear" FontSize="18" BorderThickness="2"/>
+            <Button ToolTipService.ToolTip="Shortcut key: Q" AutomationProperties.AccessKey="Q" IsTabStop="False" Content="√x"  Padding="0,5,0,7" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Black" BorderBrush="Black" ClickMode="Press" Grid.Row="1" Grid.Column="0" Click="SquareRoot" FontSize="18" BorderThickness="2"/>
+            <Button ToolTipService.ToolTip="Shortcut key: A" AutomationProperties.AccessKey="A" IsTabStop="False" Content="arc" Padding="0,5,0,7" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FF707070" BorderBrush="#FF707070"  ClickMode="Press" Grid.Row="1" Grid.Column="1" Click="Arc" FontSize="18" BorderThickness="2"/>
+            <Button ToolTipService.ToolTip="Shortcut key: S" AutomationProperties.AccessKey="S" IsTabStop="False" Content="sin" Name="SinButton" Padding="0,5,0,7" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FF707070" BorderBrush="#FF707070"  ClickMode="Press" Grid.Row="1" Grid.Column="2" Click="Sine" FontSize="18" BorderThickness="2"/>
+            <Button ToolTipService.ToolTip="Shortcut key: C" AutomationProperties.AccessKey="C" IsTabStop="False" Content="cos" Name="CosButton" Padding="0,5,0,7" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FF707070" BorderBrush="#FF707070" ClickMode="Press" Grid.Row="1" Grid.Column="3" Click="Cosine" FontSize="18" BorderThickness="2"/>
+            <Button ToolTipService.ToolTip="Shortcut key: T" AutomationProperties.AccessKey="T" IsTabStop="False" Content="tan" Name="TanButton" Padding="0,5,0,7" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FF707070" BorderBrush="#FF707070" ClickMode="Press" Grid.Row="1" Grid.Column="4" Click="Tangent" FontSize="18" BorderThickness="2"/>
+            <Button ToolTipService.ToolTip="Shortcut key: I" AutomationProperties.AccessKey="I" IsTabStop="False" Padding="0,5,0,7" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Black" BorderBrush="Black" ClickMode="Press" Grid.Row="2" Grid.Column="0" Click="Reciprocal" FontSize="18" BorderThickness="2">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontSize="14">1</TextBlock>
+                        <TextBlock>/</TextBlock>
+                        <TextBlock Margin="0,10,0,0" FontSize="14">x</TextBlock>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+            <Button ToolTipService.ToolTip="Shortcut key: W" AutomationProperties.AccessKey="W" IsTabStop="False" Content="x↔y"    Padding="0,5,0,7" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Black" BorderBrush="Black" ClickMode="Press" Grid.Row="2" Grid.Column="1" Click="Swap" FontSize="18" BorderThickness="2"/>
+            <Button ToolTipService.ToolTip="Shortcut key: D" AutomationProperties.AccessKey="D" IsTabStop="False" Content="R↓"     Padding="0,5,0,7" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Black" BorderBrush="Black" ClickMode="Press" Grid.Row="2" Grid.Column="2" Click="RollDown" FontSize="18" BorderThickness="2"/>
+            <Button ToolTipService.ToolTip="Shortcut key: &gt;" AutomationProperties.AccessKey="&gt;" IsTabStop="False" Content="STO"    Padding="0,5,0,7" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Black" BorderBrush="Black" ClickMode="Press" Grid.Row="2" Grid.Column="3" Click="Store" FontSize="18" BorderThickness="2"/>
+            <Button ToolTipService.ToolTip="Shortcut key: &lt;" AutomationProperties.AccessKey="&lt;" IsTabStop="False" Content="RCL"    Padding="0,5,0,7" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Black" BorderBrush="Black" ClickMode="Press" Grid.Row="2" Grid.Column="4" Click="Recall" FontSize="18" BorderThickness="2"/>
+            <Button Name="EnterBtn" ToolTipService.ToolTip="Shortcut key: Enter/Space" AutomationProperties.AccessKey="Enter" IsTabStop="True" Content="ENTER↑" Padding="0,6" Margin="0,10,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FF0088DD" BorderBrush="#FF0088DD" ClickMode="Press" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Click="Enter" FontSize="18" BorderThickness="2" LostFocus="Button_LostFocus_1"/>
+            <Button ToolTipService.ToolTip="Shortcut key: ~ (tilde)" AutomationProperties.AccessKey="~" IsTabStop="False" Content="CHS"    Padding="0,6" Margin="0,10,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FF0088DD" BorderBrush="#FF0088DD" ClickMode="Press" Grid.Row="3" Grid.Column="2" Click="ChangeSign" FontSize="18" BorderThickness="2"/>
+            <Button ToolTipService.ToolTip="Shortcut key: X" AutomationProperties.AccessKey="X" IsTabStop="False" Content="EEX"    Padding="0,6" Margin="0,10,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FF0088DD" BorderBrush="#FF0088DD" ClickMode="Press" Grid.Row="3" Grid.Column="3" Click="EnterExponent" FontSize="18" BorderThickness="2"/>
+            <Button ToolTipService.ToolTip="Shortcut key: Backspace" AutomationProperties.AccessKey="Backspace" IsTabStop="False" Content="CLx"    Padding="0,6" Margin="0,10,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FF0088DD" BorderBrush="#FF0088DD" ClickMode="Press" Grid.Row="3" Grid.Column="4" Click="ClearX" FontSize="18" BorderThickness="2"/>
+        </Grid>
+        <Grid Margin="10,0,10,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Button IsTabStop="False" Content="-" ToolTipService.ToolTip="Shortcut key: -" AutomationProperties.AccessKey="-" Padding="6,0,6,4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FF0088DD" BorderBrush="#FF0088DD" FontWeight="Bold" ClickMode="Press" Grid.Row="0" Grid.Column="0" Click="Subtract" FontSize="32" BorderThickness="2"/>
+            <Button IsTabStop="False" Content="7" ToolTipService.ToolTip="Shortcut key: 7" AutomationProperties.AccessKey="7" Padding="6,0,6,4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FFDDDDDD" BorderBrush="#FFDDDDDD" FontWeight="Bold" Foreground="Black" ClickMode="Press" Grid.Row="0" Grid.Column="1" Click="Seven" FontSize="32" BorderThickness="2"/>
+            <Button IsTabStop="False" Content="8" ToolTipService.ToolTip="Shortcut key: 8" AutomationProperties.AccessKey="8" Padding="6,0,6,4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FFDDDDDD" BorderBrush="#FFDDDDDD" FontWeight="Bold" Foreground="Black" ClickMode="Press" Grid.Row="0" Grid.Column="2" Click="Eight" FontSize="32" BorderThickness="2"/>
+            <Button IsTabStop="False" Content="9" ToolTipService.ToolTip="Shortcut key: 9" AutomationProperties.AccessKey="9" Padding="6,0,6,4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FFDDDDDD" BorderBrush="#FFDDDDDD" FontWeight="Bold" Foreground="Black" ClickMode="Press" Grid.Row="0" Grid.Column="3" Click="Nine" FontSize="32" BorderThickness="2"/>
+            <Button IsTabStop="False" Content="+" ToolTipService.ToolTip="Shortcut key: +" AutomationProperties.AccessKey="+" Padding="6,0,6,4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FF0088DD" BorderBrush="#FF0088DD" FontWeight="Bold" ClickMode="Press" Grid.Row="1" Grid.Column="0" Click="Add" FontSize="32" BorderThickness="2"/>
+            <Button IsTabStop="False" Content="4" ToolTipService.ToolTip="Shortcut key: 4" AutomationProperties.AccessKey="4" Padding="6,0,6,4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FFDDDDDD" BorderBrush="#FFDDDDDD" FontWeight="Bold" Foreground="Black" ClickMode="Press" Grid.Row="1" Grid.Column="1" Click="Four"  FontSize="32" BorderThickness="2"/>
+            <Button IsTabStop="False" Content="5" ToolTipService.ToolTip="Shortcut key: 5" AutomationProperties.AccessKey="5" Padding="6,0,6,4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FFDDDDDD" BorderBrush="#FFDDDDDD" FontWeight="Bold" Foreground="Black" ClickMode="Press" Grid.Row="1" Grid.Column="2" Click="Five"  FontSize="32" BorderThickness="2"/>
+            <Button IsTabStop="False" Content="6" ToolTipService.ToolTip="Shortcut key: 6" AutomationProperties.AccessKey="6" Padding="6,0,6,4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FFDDDDDD" BorderBrush="#FFDDDDDD" FontWeight="Bold" Foreground="Black" ClickMode="Press" Grid.Row="1" Grid.Column="3" Click="Six"  FontSize="32" BorderThickness="2"/>
+            <Button IsTabStop="False" Content="×" ToolTipService.ToolTip="Shortcut key: *" AutomationProperties.AccessKey="*" Padding="6,0,6,4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FF0088DD" BorderBrush="#FF0088DD" FontWeight="Bold" ClickMode="Press" Grid.Row="2" Grid.Column="0" Click="Multiply"  FontSize="32" BorderThickness="2"/>
+            <Button IsTabStop="False" Content="1" ToolTipService.ToolTip="Shortcut key: 1" AutomationProperties.AccessKey="1" Padding="6,0,6,4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FFDDDDDD" BorderBrush="#FFDDDDDD" FontWeight="Bold" Foreground="Black" ClickMode="Press" Grid.Row="2" Grid.Column="1" Click="One"  FontSize="32" BorderThickness="2"/>
+            <Button IsTabStop="False" Content="2" ToolTipService.ToolTip="Shortcut key: 2" AutomationProperties.AccessKey="2" Padding="6,0,6,4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FFDDDDDD" BorderBrush="#FFDDDDDD" FontWeight="Bold" Foreground="Black" ClickMode="Press" Grid.Row="2" Grid.Column="2" Click="Two"  FontSize="32" BorderThickness="2"/>
+            <Button IsTabStop="False" Content="3" ToolTipService.ToolTip="Shortcut key: 3" AutomationProperties.AccessKey="3" Padding="6,0,6,4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FFDDDDDD" BorderBrush="#FFDDDDDD" FontWeight="Bold" Foreground="Black" ClickMode="Press" Grid.Row="2" Grid.Column="3" Click="Three"  FontSize="32" BorderThickness="2"/>
+            <Button IsTabStop="False" Content="÷" ToolTipService.ToolTip="Shortcut key: /" AutomationProperties.AccessKey="/" Padding="6,0,6,4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FF0088DD" BorderBrush="#FF0088DD" FontWeight="Bold" ClickMode="Press" Grid.Row="3" Grid.Column="0" Click="Divide"  FontSize="32" BorderThickness="2"/>
+            <Button IsTabStop="False" Content="0" ToolTipService.ToolTip="Shortcut key: 0" AutomationProperties.AccessKey="0" Padding="6,0,6,4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FFDDDDDD" BorderBrush="#FFDDDDDD" FontWeight="Bold" Foreground="Black" ClickMode="Press" Grid.Row="3" Grid.Column="1" Click="Zero"  FontSize="32" BorderThickness="2"/>
+            <Button IsTabStop="False" Content="." ToolTipService.ToolTip="Shortcut key: ." AutomationProperties.AccessKey="." Padding="6,0,6,4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FFDDDDDD" BorderBrush="#FFDDDDDD" FontWeight="Bold" Foreground="Black" ClickMode="Press" Grid.Row="3" Grid.Column="2" Click="Dot"  FontSize="32" BorderThickness="2"/>
+            <Button IsTabStop="False" Content="π" ToolTipService.ToolTip="Shortcut key: P" AutomationProperties.AccessKey="P" Padding="6,0,6,4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FFDDDDDD" BorderBrush="#FFDDDDDD" FontWeight="Bold" Foreground="Black" ClickMode="Press" Grid.Row="3" Grid.Column="3" Click="Pi"  FontSize="32" BorderThickness="2"/>
+            <Button IsTabStop="False" Name="RecButton" ToolTipService.ToolTip="Shortcut key: R" AutomationProperties.AccessKey="R" Margin="0,10,0,0" Content="REC" Padding="6,7" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FFCC9900" BorderBrush="#FFCC9900" Foreground="White" ClickMode="Press" Grid.Row="4" Grid.Column="0" FontSize="18" BorderThickness="2" Click="Record"/>
+            <Button IsTabStop="False" Name="FButton"   ToolTipService.ToolTip="Shortcut key: F" AutomationProperties.AccessKey="F" Margin="0,10,0,0" Content="f" Padding="6,7" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FF707070" Foreground="White" ClickMode="Press" Grid.Row="4" Grid.Column="1" FontSize="18" BorderThickness="2" Click="PlayF" BorderBrush="#FF707070"/>
+            <Button IsTabStop="False" Name="GButton"   ToolTipService.ToolTip="Shortcut key: G" AutomationProperties.AccessKey="G" Margin="0,10,0,0" Content="g" Padding="6,7" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FF707070" Foreground="White" ClickMode="Press" Grid.Row="4" Grid.Column="2" FontSize="18" BorderThickness="2" Click="PlayG" BorderBrush="#FF707070"/>
+            <Button IsTabStop="False" Name="HButton"   ToolTipService.ToolTip="Shortcut key: H" AutomationProperties.AccessKey="H" Margin="0,10,0,0" Content="h" Padding="6,7" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FF707070" Foreground="White" ClickMode="Press" Grid.Row="4" Grid.Column="3" FontSize="18" BorderThickness="2" Click="PlayH" BorderBrush="#FF707070"/>
+        </Grid>
+    </StackPanel>
+</Page>
